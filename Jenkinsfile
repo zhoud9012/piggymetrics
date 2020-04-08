@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 withMaven(maven:'maven3'){
-                sh 'mvn test -Dversion=${BUILD_NUMBER}'
+                sh 'mvn test'
                 }
             }
             post {
