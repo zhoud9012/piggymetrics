@@ -30,10 +30,10 @@ pipeline {
             }
         }
         
-        stage('Package'){
+        stage('Deploy'){
             steps{
                 withMaven(maven:'maven3'){
-                sh 'mvn deploy'
+                sh 'echo deploy'
                     }
                 //nexusPublisher nexusInstanceId: 'DevOpsNexus', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/my-app-2.0.jar']], mavenCoordinate: [artifactId: 'my-app', groupId: 'william', packaging: 'jar', version: '${BUILD_NUMBER}']]]
             }
