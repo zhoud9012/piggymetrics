@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 withMaven(maven:'maven3'){
+                            sh 'echo build'
                             //sh 'mvn -B -DskipTests clean package'
                     }
             }
@@ -11,11 +12,13 @@ pipeline {
         stage('Test') {
             steps {
                 withMaven(maven:'maven3'){
+                        sh 'echo test'
                 //sh 'mvn test'
                 }
             }
             post {
                 always {
+                    sh 'echo post'
                     //tapdTestReport frameType: 'JUnit', onlyNewModified: true, reportPath: '*/target/surefire-reports/*.xml'
                 }
             }
@@ -25,6 +28,7 @@ pipeline {
                 withSonarQubeEnv('DevOpsSonarQube') {
                     withMaven(maven:'maven3'){
                        // sh 'mvn sonar:sonar'
+                        sh 'echo analysis'
                     }
                 }
             }
