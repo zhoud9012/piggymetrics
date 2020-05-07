@@ -4,19 +4,19 @@ pipeline {
         stage('Build') {
             steps {
                 withMaven(maven:'maven3'){
-                            sh 'mvn -B -DskipTests clean package'
+                            //sh 'mvn -B -DskipTests clean package'
                     }
             }
         }
         stage('Test') {
             steps {
                 withMaven(maven:'maven3'){
-                sh 'mvn test'
+                //sh 'mvn test'
                 }
             }
             post {
                 always {
-                    tapdTestReport frameType: 'JUnit', onlyNewModified: true, reportPath: '*/target/surefire-reports/*.xml'
+                    //tapdTestReport frameType: 'JUnit', onlyNewModified: true, reportPath: '*/target/surefire-reports/*.xml'
                 }
             }
         }
